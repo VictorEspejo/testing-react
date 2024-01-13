@@ -1,5 +1,6 @@
 [![Deploy Testing App](https://github.com/VictorEspejo/testing-react/actions/workflows/pipeline.yml/badge.svg)](https://github.com/VictorEspejo/testing-react/actions/workflows/pipeline.yml)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7706b06a-0a45-4845-ba95-fc10fbc4a632/deploy-status)](https://app.netlify.com/sites/courageous-haupia-16bcac/deploys)
 
 
 # Getting Started with Create React App

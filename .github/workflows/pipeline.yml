@@ -53,3 +53,29 @@ jobs:
           path: build
       - name: Test
         run: npm run test
+
+
+  e2e: 
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+          node-version: "16"
+      - name: Install dependencies
+        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          project: ./build
+          record: false
+      - name: E2E Test
+        run: npm run e2e

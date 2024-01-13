@@ -1,3 +1,7 @@
+[![Deploy Testing App](https://github.com/VictorEspejo/testing-react/actions/workflows/pipeline.yml/badge.svg)](https://github.com/VictorEspejo/testing-react/actions/workflows/pipeline.yml)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

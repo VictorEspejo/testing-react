@@ -91,7 +91,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           cache: "npm"
-          node-version: "16"
+          node-version: "18.14"
       - name: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

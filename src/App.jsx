@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -31,7 +30,7 @@ function App() {
       </header>
       <div className="flex flex-wrap justify-center">
         {pokemon.map((pokemon) => (
-          <div className="mb-16 mr-16">
+          <div key={pokemon.id} className="mb-16 mr-16">
             <Card
               key={pokemon.id}
               name={pokemon.name}
@@ -45,6 +44,8 @@ function App() {
   );
 }
 
+import PropTypes from "prop-types";
+
 function Card({ name, description, imageUrl }) {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
@@ -56,5 +57,11 @@ function Card({ name, description, imageUrl }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+};
 
 export default App;

@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "cypress/globals": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended",
+    "plugin:testing-library/react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "cypress",
+    "testing-library"
+  ],
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "off"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "build/",
+    "**/**.config.js"
+  ]
+}

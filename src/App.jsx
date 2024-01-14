@@ -1,27 +1,13 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import React from "react";
+import { useState, useEffect } from "react";
+import { usePokeListPagination, LIMIT } from "./hooks/usePokeListPagination";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
-
+  const { data, page, prevStep, nextStep} = usePokeListPagination();
+  const [ pokeList, setPokemonList] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
-      const data = await response.json();
-      const pokemons = [];
-      const promises = data.results.map(async (pokemon) => {
-        const response = await fetch(pokemon.url);
-        const data = await response.json();
-        pokemons.push(data);
-      });
-
-      await Promise.allSettled(promises);
-      setPokemon(pokemons);
-    };
-
-    fetchData();
-  }, []);
+    setPokemonList(data.slice(LIMIT * page - LIMIT, LIMIT * page));
+  }, [page, data]);
 
   return (
     <div className="App h-full w-full">
@@ -29,7 +15,10 @@ function App() {
         <span className="text-2xl">Pokemon</span>
       </header>
       <div className="flex flex-wrap justify-center bg-gray-300 pt-8">
-        {pokemon.map((pokemon) => (
+        <div className="mb-8 w-full">
+          <Pagination page={page} prevStep={prevStep} nextStep={nextStep} />
+        </div>
+        {pokeList.map((pokemon) => (
           <div key={pokemon.id} className="mb-16 mr-16">
             <Card
               key={pokemon.id}
@@ -46,6 +35,7 @@ function App() {
 
 import PropTypes from "prop-types";
 import { getPokemonTypeColor } from "./utils/pokeTypes";
+import Pagination from "./components/Pagination";
 
 function Card({ name, descriptions, imageUrl }) {
   return (
